@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Unicorn } from '../../../../shared/models/unicorn.model';
 
@@ -10,14 +11,20 @@ import { Unicorn } from '../../../../shared/models/unicorn.model';
 export class UnicornEditComponent {
   public unicorn = this.data.unicorn;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) private readonly data: { unicorn: Unicorn },
-    public readonly dialogRef: MatDialogRef<UnicornEditComponent>
-  ) {}
+  public updateForm: FormGroup;
 
-  public save(): void {
-    // TODO: !
-    const updatedUnicorn = null;
-    this.dialogRef.close(updatedUnicorn);
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: { unicorn: Unicorn },
+    public dialogRef: MatDialogRef<UnicornEditComponent>,
+    private fb: FormBuilder
+  ) {
+    this.updateForm = fb.group({
+      name: [this.unicorn.name, [Validators.required]],
+      birthyear: [this.unicorn.birthyear, [Validators.required]],
+    });
+  }
+
+  public save(updatedUnicornFields: Partial<Unicorn>): void {
+    this.dialogRef.close({ ...this.unicorn, ...updatedUnicornFields });
   }
 }

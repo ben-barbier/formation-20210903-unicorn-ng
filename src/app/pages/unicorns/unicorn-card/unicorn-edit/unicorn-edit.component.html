@@ -1,2 +1,14 @@
-<p>unicorn-edit works!</p>
-{{ unicorn | json }}
+<form [formGroup]="updateForm" (ngSubmit)="save(updateForm.value)">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Birthyear</mat-label>
+    <input matInput formControlName="birthyear" />
+  </mat-form-field>
+  <div>
+    <button type="button" mat-raised-button>Annuler</button>
+    <button mat-raised-button color="primary" [disabled]="updateForm.invalid" type="submit">Enregistrer</button>
+  </div>
+</form>
