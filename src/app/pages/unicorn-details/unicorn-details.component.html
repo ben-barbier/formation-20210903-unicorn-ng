@@ -1,1 +1,5 @@
-{{ unicorn$ | async | json }}
+<ng-container *ngIf="unicorn$ | async as unicorn">
+  {{ unicorn | json }}
+  {{ unicorn | json }}
+  {{ unicorn | json }}
+</ng-container>

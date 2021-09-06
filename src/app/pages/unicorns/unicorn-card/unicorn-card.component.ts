@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
@@ -11,14 +11,22 @@ import { UnicornEditComponent } from './unicorn-edit/unicorn-edit.component';
   selector: 'app-unicorn-card',
   templateUrl: './unicorn-card.component.html',
   styleUrls: ['./unicorn-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UnicornCardComponent implements OnInit {
+export class UnicornCardComponent implements OnInit, OnChanges {
   @Input() public unicorn: Unicorn | undefined;
   @Output() public updated = new EventEmitter<Unicorn>();
 
   public isInCart$: Observable<boolean> | undefined;
+  public age = 0;
 
   constructor(private cartService: CartService, private dialog: MatDialog, private unicornsService: UnicornsService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.unicorn) {
+      this.age = new Date().getFullYear() - this.unicorn.birthyear;
+    }
+  }
 
   ngOnInit(): void {
     if (this.unicorn) {
