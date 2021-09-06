@@ -14,9 +14,10 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './layout/nav/nav.component';
 import { UnicornCardComponent } from './pages/unicorns/unicorn-card/unicorn-card.component';
 import { UnicornsComponent } from './pages/unicorns/unicorns.component';
+import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
 
 @NgModule({
-  declarations: [AppComponent, UnicornsComponent, UnicornCardComponent, NavComponent],
+  declarations: [AppComponent, UnicornsComponent, UnicornCardComponent, NavComponent, UnicornDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
