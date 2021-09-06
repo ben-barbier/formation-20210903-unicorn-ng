@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -12,12 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './layout/nav/nav.component';
+import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
 import { UnicornCardComponent } from './pages/unicorns/unicorn-card/unicorn-card.component';
 import { UnicornsComponent } from './pages/unicorns/unicorns.component';
-import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details.component';
+import { UnicornEditComponent } from './pages/unicorns/unicorn-card/unicorn-edit/unicorn-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, UnicornsComponent, UnicornCardComponent, NavComponent, UnicornDetailsComponent],
+  declarations: [AppComponent, UnicornsComponent, UnicornCardComponent, NavComponent, UnicornDetailsComponent, UnicornEditComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +32,7 @@ import { UnicornDetailsComponent } from './pages/unicorn-details/unicorn-details
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
